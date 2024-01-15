@@ -12,7 +12,7 @@ type Decode = {
   userId: string;
   email: string;
 };
-class IndexController {
+class AuthController {
   async login(req: Request, res: Response) {
     try {
       const { email, password }: Account = req.body;
@@ -65,4 +65,4 @@ class IndexController {
   }
 }
 
-export default new IndexController();
+export default new AuthController();

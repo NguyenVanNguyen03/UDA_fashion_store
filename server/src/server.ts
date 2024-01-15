@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import { connectMongoDb } from "./config/database";
 import * as dotenv from "dotenv";
 import bodyParser from "body-parser";
-import { userRouter, authRouter } from "./router";
+import { userRouter, authRouter, productRouter } from "./router";
 
 const app = express();
 dotenv.config();
@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 
 app.use(`/${process.env.API_VERSION}/user`, userRouter);
 app.use(`/${process.env.API_VERSION}/auth`, authRouter);
+app.use(`${process.env.API_VERSION}/product`, productRouter);
 
 app.use((req: Request, res: Response) => {
   res.status(404).json({ message: "Route not found" });
