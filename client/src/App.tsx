@@ -1,11 +1,8 @@
+import AppRouter from "./router";
 import "./App.css";
 
 function App() {
-  return (
-    <>
-      <h1>Hello world22</h1>
-    </>
-  );
+  return <AppRouter />;
 }
 
 export default App;
