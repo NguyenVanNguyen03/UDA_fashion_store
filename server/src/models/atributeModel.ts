@@ -1,17 +1,17 @@
-import { Document, Schema, model } from "mongoose";
+import { Document, ObjectId, Schema, model } from "mongoose";
 
 export interface IAtribute extends Document {
-  atributeName: string;
-  atributeValue: string;
-  productId: Object;
+  attributeName: string;
+  attributeValue: string;
+  productId: ObjectId;
 }
 
-const atributeSchema = new Schema<IAtribute>({
-  atributeName: { type: String, required: true },
-  atributeValue: { type: String, required: true },
+const attributeSchema = new Schema<IAtribute>({
+  attributeName: { type: String, required: true },
+  attributeValue: { type: String, required: true },
   productId: { type: Schema.Types.ObjectId, required: true },
 });
 
-const Atribute = model<IAtribute>("atributies", atributeSchema);
+const Attribute = model<IAtribute>("attributies", attributeSchema);
 
-export default Atribute;
+export default Attribute;
