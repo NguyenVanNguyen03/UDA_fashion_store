@@ -1,9 +1,11 @@
 // create controller user by ts and express
 import { Request, Response } from "express";
+import User, { IUser } from "../models/userModel";
 
 class UserController {
   async index(req: Request, res: Response) {
-    res.json({ message: "Hello World" });
+    let user: IUser[] = await User.find();
+    res.json(user);
   }
 }
 
