@@ -33,12 +33,3 @@ cd client
 yarn install
 yarn run dev
 ```
-# UDA_fashion_store
-# UDA_fashion_store
-# Uda_clothing_store
-# Uda_clothing_store
-# huhu
-# UDA_fashion_store
-# UDA_fashion_store
-# alo
-# UDA_fashion_store
