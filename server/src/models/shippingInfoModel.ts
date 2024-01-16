@@ -1,5 +1,4 @@
 import { Document, Schema, model } from "mongoose";
-
 export interface IShippingInfo extends Document {
   shippingCost: number;
   phoneNumber: string;

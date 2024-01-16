@@ -1,5 +1,4 @@
 import { Document, Schema, model } from "mongoose";
-
 export interface IParentCategory extends Document {
   parentCategoryName: string;
 }

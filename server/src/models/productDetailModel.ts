@@ -1,5 +1,4 @@
 import { Document, ObjectId, Schema, model } from "mongoose";
-
 export interface IProductDetail extends Document {
   stockQuantity: number;
   price: number;
