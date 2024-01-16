@@ -63,7 +63,12 @@ class ProductController {
 
   async getAllProducts(req: Request, res: Response): Promise<Response<any, Record<string, any>>> {
     try {
-      const products: IProduct[] = await Product.find();
+      const page = parseInt(req.query.page as string) || 1;
+      const limit = parseInt(req.query.limit as string) || 10;
+      const startIndex = (page - 1) * limit;
+      const endIndex = page * limit;
+
+      const products: IProduct[] = await Product.find().skip(startIndex).limit(endIndex);
       const allProduct: AllProduct[] = await Promise.all(
         products.map(async (product) => {
           const productDetails: IProductDetail[] = await ProductDetail.find({
@@ -84,9 +89,64 @@ class ProductController {
           } as unknown as AllProduct;
         }),
       );
-      return res.status(200).json({ products: allProduct });
+
+      const result = {
+        products: allProduct,
+        pageInfo: {
+          totalProduct: await Product.countDocuments(),
+          totalPages: Math.ceil((await Product.countDocuments()) / limit),
+          currentPage: page,
+        },
+      };
+      return res.status(200).json(result);
     } catch (error) {
       return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
+  async getProductsByCategory(req: Request, res: Response) {
+    try {
+      const categoryId = req.query.categoryId;
+      const parentCategoryId = req.query.parentCategoryId;
+      if (!isValidObjectId(categoryId) || !isValidObjectId(parentCategoryId)) {
+        return res.status(400).json({ message: "Invalid productId and parentCategoryId" });
+      }
+
+      const products: IProduct[] | null = await Product.find({
+        categoryId,
+        parentCategoryId,
+      });
+
+      if (!products) {
+        res.status(404).json({ message: "Product not found" });
+        return;
+      }
+
+      const allProduct: AllProduct[] = await Promise.all(
+        products.map(async (product) => {
+          const productDetails: IProductDetail[] = await ProductDetail.find({
+            productId: product._id,
+          });
+          const productImages: IProductImage[] = await ProductImage.find({
+            productId: product._id,
+          });
+          const attributes: IAtribute[] = await Attribute.find({
+            productId: product._id,
+          });
+
+          return {
+            product,
+            productDetails,
+            productImages,
+            attributes,
+          } as unknown as AllProduct;
+        }),
+      );
+
+      res.status(200).json(allProduct);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Internal Server Error" });
     }
   }
 
