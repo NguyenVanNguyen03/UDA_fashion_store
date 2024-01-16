@@ -10,6 +10,6 @@ const parentCategorySchema = new Schema<IParentCategory>({
   categoryId: { type: Schema.Types.ObjectId },
 });
 
-const ParentCategory = model<IParentCategory>("parentcategories", parentCategorySchema);
+const ParentCategory = model<IParentCategory>("parentCategories", parentCategorySchema);
 
 export default ParentCategory;

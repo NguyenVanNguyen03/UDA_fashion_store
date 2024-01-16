@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.use(`/${process.env.API_VERSION}/users`, userRouter);
 app.use(`/${process.env.API_VERSION}/auth`, authRouter);
-app.use(`${process.env.API_VERSION}/products`, productRouter);
+app.use(`/${process.env.API_VERSION}/products`, productRouter);
 
 app.use((req: Request, res: Response) => {
   res.status(404).json({ message: "Route not found" });
