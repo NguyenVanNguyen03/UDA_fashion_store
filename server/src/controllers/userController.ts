@@ -3,10 +3,6 @@ import { Request, Response } from "express";
 import User, { IUser } from "../models/userModel";
 
 class UserController {
-  async index(req: Request, res: Response) {
-    let user: IUser[] = await User.find();
-    res.json(user);
-  }
   async addUser(req: Request, res: Response) {
     try {
       const { firstName, lastName, gender, dob, email, password, phoneNumber, address } = req.body;
