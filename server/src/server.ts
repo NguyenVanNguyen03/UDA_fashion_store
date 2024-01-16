@@ -2,10 +2,15 @@ import express, { Request, Response } from "express";
 import { connectMongoDb } from "./config/database";
 import * as dotenv from "dotenv";
 import bodyParser from "body-parser";
-import { userRouter, authRouter, productRouter, discountCodeRouter } from "./router";
-import parentCategoryRouter from "./router/parentCategoryRouter";
-import categoryRouter from "./router/categoryRouter";
-import sizeRouter from "./router/sizeRouter";
+import {
+  userRouter,
+  authRouter,
+  productRouter,
+  discountCodeRouter,
+  categoryRouter,
+  parentCategoryRouter,
+  sizeRouter,
+} from "./router";
 
 const app = express();
 dotenv.config();
