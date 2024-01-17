@@ -1,0 +1,24 @@
+// ProductCarousel.scss
+@import 'bootstrap/scss/bootstrap';
+
+.product-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  height: 100vh;
+
+  .col {
+    padding: 0.5rem; // Thêm khoảng cách giữa các ảnh
+  }
+
+  img {
+    object-fit: cover;
+    scroll-snap-align: start;
+  }
+}
+
+.product-carousel::-webkit-scrollbar {
+  display: none;
+}
