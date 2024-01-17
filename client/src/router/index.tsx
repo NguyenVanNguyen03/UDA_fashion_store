@@ -1,14 +1,46 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage, LoginPage } from "../pages/client";
 import { screenUrl } from "../constants/screenUrls";
+import LayoutContainer from "../components/common/LayoutContainer";
+
+const routerconfig = [
+  {
+    url: screenUrl.HOME,
+    component: HomePage,
+    title: "Trang chủ",
+    isHeader: true,
+    isFooter: true,
+  },
+  {
+    url: screenUrl.LOGIN,
+    component: LoginPage,
+    title: "Trang đăng nhập",
+    isHeader: true,
+    isFooter: true,
+  },
+];
 
 const AppRouter = (): JSX.Element => {
   return (
     <Router>
       <Routes>
         <Route>
-          <Route path={screenUrl.HOME} element={<HomePage />} />
-          <Route path={screenUrl.LOGIN} element={<LoginPage />} />
+          {routerconfig.map((el, index) => {
+            return (
+              <Route
+                key={index}
+                path={el.url}
+                element={
+                  <LayoutContainer
+                    title={el.title}
+                    component={el.component}
+                    isFooter={el.isFooter}
+                    isHeader={el.isHeader}
+                  />
+                }
+              />
+            );
+          })}
         </Route>
       </Routes>
     </Router>

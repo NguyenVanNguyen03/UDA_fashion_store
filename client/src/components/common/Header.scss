@@ -1,0 +1,30 @@
+.header {
+  width: 100%;
+  background-color: #cccccc4c;
+  padding: 50px 50px;
+  &.active {
+    position: fixed;
+    z-index: 20;
+    padding: 20px 20px;
+    top: 0;
+    left: 0;
+    transition: padding 0.3s ease, transform 0.3s ease;
+  }
+  &-logo.no-scroll,
+  &-icons.no-scroll {
+    width: 33% !important;
+  }
+  &-underline {
+    width: 33%;
+    @media screen and (max-width: 992px) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+  }
+  & .overlay {
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+  }
+}
