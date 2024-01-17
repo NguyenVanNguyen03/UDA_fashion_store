@@ -1,0 +1,19 @@
+.search-form {
+  //   position: absolute;
+  width: 40%;
+  //   height: 100vh;
+  background-color: red;
+  & .title {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  & input {
+    width: 100%;
+    padding: 20px;
+    border: none;
+  }
+  & input:focus {
+    outline: none;
+  }
+}

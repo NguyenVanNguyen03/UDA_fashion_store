@@ -1,4 +1,3 @@
-// apiUrls.js
 const API_BASE_URL = "https://api.example.com";
 const USER_ENDPOINT = "/users";
 const PRODUCT_ENDPOINT = "/products";

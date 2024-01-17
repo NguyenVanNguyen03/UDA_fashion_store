@@ -1,0 +1,37 @@
+.navlink {
+  & a {
+    padding: 10px;
+    font-size: var(--parentCategory-font-size);
+    color: var(--nav-color);
+  }
+
+  .btn-dropDown {
+    transition: transform 0.3s ease;
+  }
+
+  & .dropDown__wrapper {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    & a {
+      display: block;
+      cursor: pointer;
+      font-size: var(--category-font-size);
+      padding: 10px 25px;
+      border-bottom: 1px solid rgba(179, 179, 179, 0.808);
+    }
+    & a:hover {
+      color: rgb(13, 142, 228);
+    }
+  }
+
+  &:hover .btn-dropDown {
+    transform: rotate(180deg);
+  }
+
+  &:hover .dropDown__wrapper {
+    max-height: 300px;
+  }
+}
