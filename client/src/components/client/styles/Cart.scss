@@ -1,0 +1,60 @@
+.cart {
+  width: 40%;
+  background-color: white;
+  box-shadow: 1px 2px 3px black;
+  z-index: 20;
+  padding: 80px;
+  overflow: auto;
+  @media screen and (max-width: 992px) {
+    & {
+      width: 50%;
+      padding: 30px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    & {
+      width: 80%;
+    }
+  }
+  & .title {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+  & .icon-close {
+    top: 20px;
+    right: 20px;
+  }
+  &__separator {
+    height: 3px;
+    background-color: black;
+  }
+  &__btn {
+    &-watch--cart,
+    &-payment {
+      font-size: 0.8rem !important;
+    }
+  }
+  &__total-title,
+  &__total-price {
+    font-size: 0.9rem;
+  }
+  &__product {
+    &-img {
+      max-width: 90px;
+      max-height: 90px;
+      object-fit: cover;
+    }
+    &-title,
+    &-size,
+    &-price {
+      font-size: 0.8rem;
+    }
+    &-title {
+      font-weight: 600;
+    }
+    &-size,
+    &-price {
+      font-weight: 400;
+    }
+  }
+}

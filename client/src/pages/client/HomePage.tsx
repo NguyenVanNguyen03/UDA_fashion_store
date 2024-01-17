@@ -1,12 +1,14 @@
-// import SearchForm from "../../components/client/SearchForm";
-import { Header } from "../../components/index";
+import "./HomePage.scss";
 
-const HomePage = (): JSX.Element => {
+const HomePage = () => {
   return (
-    <div className="homepage position-relative">
-      <Header />
-      {/* <SearchForm /> */}
-    </div>
+    <div
+      className="homepage position-relative"
+      style={{
+        backgroundColor: "red",
+        height: "1000px",
+      }}
+    ></div>
   );
 };
 
