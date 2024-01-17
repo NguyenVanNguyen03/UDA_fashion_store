@@ -1,4 +1,4 @@
-import SearchForm from "../../components/client/SearchForm";
+// import SearchForm from "../../components/client/SearchForm";
 import { Header } from "../../components/index";
 
 const HomePage = (): JSX.Element => {
