@@ -1,28 +1,73 @@
-import '../../components/client/styles/LoginScreen.scss'
+// LoginPage.js
+import { useState } from 'react';
+import '../../components/client/styles/LoginScreen.scss';
+import { GoDash } from "react-icons/go";
 const LoginPage = (): JSX.Element => {
-  return ( 
-  <div className="login-screen">
-  <div className="left-section">
-    <h2>Đăng nhập</h2>
-  </div>
-  <div className="right-section">
-    <form>
-      <label htmlFor="email">Email:</label>
-      <input type="email" id="email" name="email" />
+  const [forgotPassword, setForgotPassword] = useState(false);
+  const [submitButtonText, setSubmitButtonText] = useState('Đăng nhập');
+  const [email, setEmail] = useState('');
 
-      <label htmlFor="password">Mật khẩu:</label>
-      <input type="password" id="password" name="password" />
-      <div className='row'>
-        <button type="submit">Đăng nhập</button>
-       <div className="additional-options">
-       <span>Quên mật khẩu?</span>
-        <p>Hoặc <span>Đăng ký</span></p>
-       </div>
+
+
+  const handleForgotPasswordClick = () => {
+    setForgotPassword(true);
+    setSubmitButtonText('Gửi');
+
+  };
+
+  const handleBackToLoginClick = () => {
+    setForgotPassword(false);
+    setSubmitButtonText('Đăng nhập');
+
+  };
+
+
+  return (
+    <div className="login-screen">
+      <div className="left-section">
+        <h2> Đăng nhập</h2>
+        <div style={{ marginLeft: '15%' }}>
+          <GoDash fontSize={60} />
         </div>
-      
-    </form>
-  </div>
-</div>);
+      </div>
+      <div className="right-section">
+        <form >
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+
+          />
+
+          {forgotPassword ? (
+            <>
+              <div className="additional-options">
+                <p style={{ color: 'red' }}>Nhập lại email để gửi mã khôi phục mật khẩu.</p>
+                <button type="submit">Gửi</button>
+
+                <a onClick={handleBackToLoginClick}> huỷ</a>
+              </div>
+            </>
+          ) : (
+            <>
+              <label htmlFor="password">Mật khẩu:</label>
+              <input type="password" id="password" name="password" />
+              <div className="row">
+                <button type="submit">{submitButtonText}</button>
+                <div className="additional-options">
+                  <span onClick={handleForgotPasswordClick}>Quên mật khẩu?</span>
+                  <p>hoặc <span>Đăng ký</span></p>
+                </div>
+              </div>
+            </>
+          )}
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default LoginPage;

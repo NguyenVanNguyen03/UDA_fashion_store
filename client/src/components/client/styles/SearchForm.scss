@@ -1,10 +1,21 @@
 .search-form {
-  //   position: absolute;
   width: 40%;
-  //   height: 100vh;
-  background-color: red;
+  background-color: white;
+  box-shadow: 1px 2px 3px black;
+  z-index: 20;
+  padding: 40px;
+  @media screen and (max-width: 992px) {
+    & {
+      width: 50%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    & {
+      width: 80%;
+    }
+  }
   & .title {
-    font-size: 1.5rem;
+    font-size: 0.9rem;
     font-weight: 400;
   }
 
@@ -12,8 +23,17 @@
     width: 100%;
     padding: 20px;
     border: none;
+    background-color: rgba(223, 223, 223, 0.509);
   }
   & input:focus {
     outline: none;
+  }
+  & .icon-close {
+    top: 20px;
+    right: 20px;
+  }
+  & .btn-search,
+  & .btn-search:hover {
+    background-color: rgba(223, 223, 223, 0.509);
   }
 }

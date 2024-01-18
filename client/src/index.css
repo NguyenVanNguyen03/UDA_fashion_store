@@ -1,6 +1,6 @@
 :root {
-  --parentCategory-font-size: 1.4rem;
-  --category-font-size: 1.2rem;
+  --parentCategory-font-size: 1.1rem;
+  --category-font-size: 0.8rem;
   --nav-color: black;
   --base-font-size: 16px;
   --heading1-font-size: 2rem;
@@ -18,9 +18,12 @@ ul,li, ol {
   margin: 0;
 }
 
-a{
-  text-decoration: none;
+a {
+  color: inherit; 
+  text-decoration: none; 
+  cursor: pointer;
 }
+
 
 p{
   padding: 0;

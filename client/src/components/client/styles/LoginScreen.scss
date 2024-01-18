@@ -8,9 +8,18 @@
       background-color: #3498db;
       color: #fff;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content:center;
+      flex-direction: column;
+      
       flex: 1;
+
+      h2{
+        margin-left: 15%;
+        font-size: 3em; 
+        font-family: 'Your Preferred Font', sans-serif;
+        font-weight: 500;
+      }
+
     }
   
     .right-section {
@@ -38,11 +47,11 @@
   
         .row {
           padding-top: 8px;
-          display: flex; // Thêm dòng này để .row hiển thị dưới dạng flex container
+          display: flex; 
           justify-content: space-between;
           align-items: center;
-          width: 100%; // Đảm bảo rằng .row chiếm toàn bộ chiều rộng của form
-          margin-bottom: 10px; // Thêm khoảng cách giữa .row và các phần tử khác
+          width: 100%; 
+          margin-bottom: 10px;
           flex-wrap: nowrap; 
           margin-left: 0;
         }
@@ -53,16 +62,16 @@
           padding: 10px;
           border: none;
           cursor: pointer;
-          width: 48%; // Đặt chiều rộng của nút đăng nhập
+          width: 30%; 
+          margin-right: 20px;
         }
   
         .additional-options {
-          
           justify-content: space-between;
-          width: 100%; // Đảm bảo rằng .additional-options chiếm toàn bộ chiều rộng của form
+          width: 100%; 
   
           p {
-            margin: 0; // Loại bỏ margin mặc định
+            padding-bottom: 8px;
           }
   
           span {
