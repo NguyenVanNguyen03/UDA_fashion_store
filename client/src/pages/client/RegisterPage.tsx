@@ -1,4 +1,3 @@
-// RegisterPage.js
 import { useState } from 'react';
 import '../../components/client/styles/RegisterPage.scss';
 import { GoArrowLeft, GoDash } from "react-icons/go";
