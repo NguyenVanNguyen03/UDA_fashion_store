@@ -1,4 +1,3 @@
-// create controller user by ts and express
 import { Request, Response } from "express";
 import Category, { ICategory } from "../models/categoryModel";
 import Product from "../models/productModel";
@@ -56,11 +55,9 @@ class CategoryController {
       const updateData = {
         categoryName,
       };
-      const updatedCategory = await Category.findOneAndUpdate(
-        { _id: CategoryId },
-        updateData,
-        { new: true },
-      );
+      const updatedCategory = await Category.findOneAndUpdate({ _id: CategoryId }, updateData, {
+        new: true,
+      });
       if (!updatedCategory) {
         return res.status(404).json({ message: "Category does not exist !" });
       }
@@ -73,17 +70,13 @@ class CategoryController {
   async deleteCategory(req: Request, res: Response) {
     try {
       const CategoryId = req.params.id;
-  
+
       const productCount = await Product.countDocuments({ CategoryId });
 
       if (productCount > 0) {
-        return res
-          .status(409)
-          .json({ message: "Cannot delete Category with associated products" });
+        return res.status(409).json({ message: "Cannot delete Category with associated products" });
       }
-      const existingCategory: ICategory | null = await Category.findByIdAndDelete(
-        CategoryId,
-      );
+      const existingCategory: ICategory | null = await Category.findByIdAndDelete(CategoryId);
 
       if (!existingCategory) {
         return res.status(404).json({ message: "Category not found" });
