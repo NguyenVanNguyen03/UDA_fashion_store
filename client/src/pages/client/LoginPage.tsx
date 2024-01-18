@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { GoDash } from "react-icons/go";
+import { screenUrl } from '../../constants/screenUrls';
+import { Link } from 'react-router-dom';
 import "../../components/client/styles/LoginScreen.scss";
 
 const LoginPage = (): JSX.Element => {
@@ -53,12 +55,9 @@ const LoginPage = (): JSX.Element => {
               <div className="row">
                 <button type="submit">{submitButtonText}</button>
                 <div className="additional-options">
-                  <span onClick={handleForgotPasswordClick}>
-                    Quên mật khẩu?
-                  </span>
-                  <p>
-                    hoặc <span>Đăng ký</span>
-                  </p>
+                  <span onClick={handleForgotPasswordClick}>Quên mật khẩu?</span>
+                  <p>hoặc <Link to={screenUrl.REGISTER }>  <span>Đăng ký</span></Link></p>
+
                 </div>
               </div>
             </>
