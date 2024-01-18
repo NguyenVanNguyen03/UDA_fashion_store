@@ -2,10 +2,16 @@
 import { useState } from 'react';
 import axios from 'axios'; // Import thư viện Axios
 import '../../components/client/styles/LoginScreen.scss';
+<<<<<<< HEAD
 import { GoDash } from "react-icons/go";
 
 // ...
 
+=======
+import { GoDash } from 'react-icons/go';
+import AuthApi from '../../apis/authApi'; // Thay đổi đường dẫn tới AuthApi
+import { ApiResponse } from '../../apis/ApiResponse';
+>>>>>>> main
 const LoginPage = (): JSX.Element => {
   const [forgotPassword, setForgotPassword] = useState(false);
   const [submitButtonText, setSubmitButtonText] = useState('Đăng nhập');
@@ -22,6 +28,7 @@ const LoginPage = (): JSX.Element => {
     setSubmitButtonText('Đăng nhập');
   };
 
+<<<<<<< HEAD
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:3000/v1/auth/login', {
@@ -48,6 +55,45 @@ const LoginPage = (): JSX.Element => {
     // Gọi hàm xử lý đăng nhập
     handleLogin();
   };
+=======
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (forgotPassword) {
+      // Xử lý gửi mã khôi phục mật khẩu
+      // ...
+    } else {
+      try {
+        const response: ApiResponse = await AuthApi.login(email, password);
+        if (response.userId && response.token) {
+          alert('Đăng nhập thành công ');
+          localStorage.setItem('userId', response.userId);
+          localStorage.setItem('token', response.token);
+ 
+          
+        } else {
+          alert( response.message );
+          console.log( response.message);
+        }
+      } catch (error: unknown) {
+        if (typeof error === 'object' && error !== null) {
+          // Nếu error là một object không phải là null hoặc undefined
+          const typedError = error as { response?: { status?: number } };
+          if (typedError.response && typedError.response.status === 401) {
+            // Lỗi 401 - Unauthorized (mật khẩu không đúng)
+            alert('Đăng nhập không thành công: Mật khẩu không đúng');
+            // Hiển thị thông báo lỗi cho người dùng
+            // Ví dụ: setState để hiển thị thông báo lỗi trên giao diện
+            // Ví dụ: this.setState({ errorMessage: 'Mật khẩu không đúng' });
+          } else {
+            console.error('Lỗi khi gửi yêu cầu đăng nhập:', error);
+          }
+        } else {
+          console.error('Lỗi khi gửi yêu cầu đăng nhập:', error);
+        }
+      }
+    }
+  };
+>>>>>>> main
 
   return (
     <div className="login-screen">
@@ -58,7 +104,11 @@ const LoginPage = (): JSX.Element => {
         </div>
       </div>
       <div className="right-section">
+<<<<<<< HEAD
         <form onSubmit={handleSubmit}> {/* Thêm sự kiện onSubmit để kích hoạt khi nhấn nút submit */}
+=======
+        <form onSubmit={handleSubmit}>
+>>>>>>> main
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -73,7 +123,6 @@ const LoginPage = (): JSX.Element => {
               <div className="additional-options">
                 <p style={{ color: 'red' }}>Nhập lại email để gửi mã khôi phục mật khẩu.</p>
                 <button type="submit">Gửi</button>
-
                 <a onClick={handleBackToLoginClick}> huỷ</a>
               </div>
             </>
