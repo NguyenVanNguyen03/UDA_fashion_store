@@ -1,14 +1,11 @@
+import ProductCarousel from "../../components/client/ProductCarousel ";
 import "./HomePage.scss";
 
 const HomePage = () => {
   return (
-    <div
-      className="homepage position-relative"
-      style={{
-        backgroundColor: "red",
-        height: "1000px",
-      }}
-    ></div>
+    <div className="homepage position-relative">
+      <ProductCarousel/>
+    </div>
   );
 };
 
