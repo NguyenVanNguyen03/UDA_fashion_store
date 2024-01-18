@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import '../../components/client/styles/LoginScreen.scss';
 import { GoDash } from "react-icons/go";
+import { screenUrl } from '../../constants/screenUrls';
+import { Link } from 'react-router-dom';
 const LoginPage = (): JSX.Element => {
   const [forgotPassword, setForgotPassword] = useState(false);
   const [submitButtonText, setSubmitButtonText] = useState('Đăng nhập');
@@ -59,7 +61,8 @@ const LoginPage = (): JSX.Element => {
                 <button type="submit">{submitButtonText}</button>
                 <div className="additional-options">
                   <span onClick={handleForgotPasswordClick}>Quên mật khẩu?</span>
-                  <p>hoặc <span>Đăng ký</span></p>
+                  <p>hoặc <Link to={screenUrl.REGISTER }>  <span>Đăng ký</span></Link></p>
+
                 </div>
               </div>
             </>
