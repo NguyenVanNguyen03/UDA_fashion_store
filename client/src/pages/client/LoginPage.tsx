@@ -1,17 +1,9 @@
 // LoginPage.js
 import { useState } from 'react';
-import axios from 'axios'; // Import thư viện Axios
 import '../../components/client/styles/LoginScreen.scss';
-<<<<<<< HEAD
-import { GoDash } from "react-icons/go";
-
-// ...
-
-=======
 import { GoDash } from 'react-icons/go';
 import AuthApi from '../../apis/authApi'; // Thay đổi đường dẫn tới AuthApi
 import { ApiResponse } from '../../apis/ApiResponse';
->>>>>>> main
 const LoginPage = (): JSX.Element => {
   const [forgotPassword, setForgotPassword] = useState(false);
   const [submitButtonText, setSubmitButtonText] = useState('Đăng nhập');
@@ -28,34 +20,6 @@ const LoginPage = (): JSX.Element => {
     setSubmitButtonText('Đăng nhập');
   };
 
-<<<<<<< HEAD
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post('http://localhost:3000/v1/auth/login', {
-        email,
-        password,
-      }, {
-        withCredentials: true,
-      });
-      if (response.data.success) {
-        // Xử lý khi đăng nhập thành công
-        console.log('Đăng nhập thành công');
-      } else {
-        // Xử lý khi đăng nhập không thành công
-        console.log('Đăng nhập không thành công:', response.data.message);
-      }
-    } catch (error) {
-      console.error('Lỗi khi gửi yêu cầu đăng nhập:', error);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Ngăn chặn form gửi đi để xử lý bằng JavaScript
-
-    // Gọi hàm xử lý đăng nhập
-    handleLogin();
-  };
-=======
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (forgotPassword) {
@@ -93,7 +57,6 @@ const LoginPage = (): JSX.Element => {
       }
     }
   };
->>>>>>> main
 
   return (
     <div className="login-screen">
@@ -104,11 +67,7 @@ const LoginPage = (): JSX.Element => {
         </div>
       </div>
       <div className="right-section">
-<<<<<<< HEAD
-        <form onSubmit={handleSubmit}> {/* Thêm sự kiện onSubmit để kích hoạt khi nhấn nút submit */}
-=======
         <form onSubmit={handleSubmit}>
->>>>>>> main
           <label htmlFor="email">Email:</label>
           <input
             type="email"
