@@ -1,7 +1,3 @@
-// ProductCarousel.js
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 const ProductCarousel = () => {
   const productImages = [
     'https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4',
