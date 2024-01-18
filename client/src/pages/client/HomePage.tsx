@@ -52,7 +52,7 @@ const categories = [
 
 const products = [
   {
-    category: "Áo khoác",
+    category: "ÁO KHOÁC",
     products: [
       {
         id: 1,
@@ -90,7 +90,7 @@ const products = [
 
 const HomePage = () => {
   const [isActive, setIsActive] = useState(0);
-  const [categoryName, setCategoryName] = useState("Áo khoác");
+  const [categoryName, setCategoryName] = useState("ÁO KHOÁC");
 
   useEffect(() => {
     const g = async () => {
@@ -134,6 +134,8 @@ const HomePage = () => {
                 className={isActive == index ? "active" : ""}
                 onClick={() => {
                   handleClickCategory(index);
+                  console.log(category.title);
+                  setCategoryName(category.title);
                 }}
               >
                 {category.title}
