@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage, LoginPage } from "../pages/client";
 import { screenUrl } from "../constants/screenUrls";
 import LayoutContainer from "../components/common/LayoutContainer";
+import RegisterPage from "../pages/client/RegisterPage"
+// D:\Năm 3\Project React\UDA_fashion_store\client\src\pages\client\RegisterPage.tsx
 
 const routerconfig = [
   {
@@ -17,7 +19,14 @@ const routerconfig = [
     title: "Trang đăng nhập",
     isHeader: true,
     isFooter: true,
-  },
+  },  
+  {
+    url: screenUrl.REGISTER,
+    component: RegisterPage,
+    title: "Trang đăng ký",
+    isHeader: true,
+    isFooter: true,
+  },  
 ];
 
 const AppRouter = (): JSX.Element => {
