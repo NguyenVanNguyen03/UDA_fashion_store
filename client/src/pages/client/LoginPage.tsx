@@ -1,26 +1,53 @@
 // LoginPage.js
 import { useState } from 'react';
+import axios from 'axios'; // Import thư viện Axios
 import '../../components/client/styles/LoginScreen.scss';
 import { GoDash } from "react-icons/go";
+
+// ...
+
 const LoginPage = (): JSX.Element => {
   const [forgotPassword, setForgotPassword] = useState(false);
   const [submitButtonText, setSubmitButtonText] = useState('Đăng nhập');
   const [email, setEmail] = useState('');
-
-
+  const [password, setPassword] = useState('');
 
   const handleForgotPasswordClick = () => {
     setForgotPassword(true);
     setSubmitButtonText('Gửi');
-
   };
 
   const handleBackToLoginClick = () => {
     setForgotPassword(false);
     setSubmitButtonText('Đăng nhập');
-
   };
 
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/v1/auth/login', {
+        email,
+        password,
+      }, {
+        withCredentials: true,
+      });
+      if (response.data.success) {
+        // Xử lý khi đăng nhập thành công
+        console.log('Đăng nhập thành công');
+      } else {
+        // Xử lý khi đăng nhập không thành công
+        console.log('Đăng nhập không thành công:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Lỗi khi gửi yêu cầu đăng nhập:', error);
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // Ngăn chặn form gửi đi để xử lý bằng JavaScript
+
+    // Gọi hàm xử lý đăng nhập
+    handleLogin();
+  };
 
   return (
     <div className="login-screen">
@@ -31,7 +58,7 @@ const LoginPage = (): JSX.Element => {
         </div>
       </div>
       <div className="right-section">
-        <form >
+        <form onSubmit={handleSubmit}> {/* Thêm sự kiện onSubmit để kích hoạt khi nhấn nút submit */}
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -39,7 +66,6 @@ const LoginPage = (): JSX.Element => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-
           />
 
           {forgotPassword ? (
@@ -54,7 +80,13 @@ const LoginPage = (): JSX.Element => {
           ) : (
             <>
               <label htmlFor="password">Mật khẩu:</label>
-              <input type="password" id="password" name="password" />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <div className="row">
                 <button type="submit">{submitButtonText}</button>
                 <div className="additional-options">
