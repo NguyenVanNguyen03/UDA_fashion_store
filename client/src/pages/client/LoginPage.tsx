@@ -1,37 +1,32 @@
-// LoginPage.js
-import { useState } from 'react';
-import '../../components/client/styles/LoginScreen.scss';
+import { useState } from "react";
 import { GoDash } from "react-icons/go";
+import "../../components/client/styles/LoginScreen.scss";
+
 const LoginPage = (): JSX.Element => {
   const [forgotPassword, setForgotPassword] = useState(false);
-  const [submitButtonText, setSubmitButtonText] = useState('Đăng nhập');
-  const [email, setEmail] = useState('');
-
-
+  const [submitButtonText, setSubmitButtonText] = useState("Đăng nhập");
+  const [email, setEmail] = useState("");
 
   const handleForgotPasswordClick = () => {
     setForgotPassword(true);
-    setSubmitButtonText('Gửi');
-
+    setSubmitButtonText("Gửi");
   };
 
   const handleBackToLoginClick = () => {
     setForgotPassword(false);
-    setSubmitButtonText('Đăng nhập');
-
+    setSubmitButtonText("Đăng nhập");
   };
-
 
   return (
     <div className="login-screen">
       <div className="left-section">
         <h2> Đăng nhập</h2>
-        <div style={{ marginLeft: '15%' }}>
+        <div style={{ marginLeft: "15%" }}>
           <GoDash fontSize={60} />
         </div>
       </div>
       <div className="right-section">
-        <form >
+        <form>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -39,13 +34,13 @@ const LoginPage = (): JSX.Element => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-
           />
-
           {forgotPassword ? (
             <>
               <div className="additional-options">
-                <p style={{ color: 'red' }}>Nhập lại email để gửi mã khôi phục mật khẩu.</p>
+                <p style={{ color: "red" }}>
+                  Nhập lại email để gửi mã khôi phục mật khẩu.
+                </p>
                 <button type="submit">Gửi</button>
 
                 <a onClick={handleBackToLoginClick}> huỷ</a>
@@ -58,8 +53,12 @@ const LoginPage = (): JSX.Element => {
               <div className="row">
                 <button type="submit">{submitButtonText}</button>
                 <div className="additional-options">
-                  <span onClick={handleForgotPasswordClick}>Quên mật khẩu?</span>
-                  <p>hoặc <span>Đăng ký</span></p>
+                  <span onClick={handleForgotPasswordClick}>
+                    Quên mật khẩu?
+                  </span>
+                  <p>
+                    hoặc <span>Đăng ký</span>
+                  </p>
                 </div>
               </div>
             </>
