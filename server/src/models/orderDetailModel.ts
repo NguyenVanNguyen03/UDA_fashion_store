@@ -1,4 +1,5 @@
 import { Document, Schema, model } from "mongoose";
+
 export interface IOrderDetail extends Document {
   orderId: Object;
   productDetailId: Object;

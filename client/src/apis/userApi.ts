@@ -15,7 +15,7 @@ class UserApi {
   create(user: UserInfo) {
     const url: string = "/users";
 
-    axiosClient.post(url, {
+    return axiosClient.post(url, {
       ...user,
     });
   }
