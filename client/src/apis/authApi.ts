@@ -1,5 +1,4 @@
 import axiosClient from "./axiosClient";
-
 class AuthApi {
   login(email: string, password: string) {
     const url: string = "/auth/login";
@@ -7,6 +6,19 @@ class AuthApi {
       email,
       password,
     });
+  }
+
+  logout(token: string) {
+    const url: string = "/auth/logout";
+    return axiosClient.post(
+      url,
+      {},
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
   }
 }
 
