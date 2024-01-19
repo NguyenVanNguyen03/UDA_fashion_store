@@ -1,6 +1,6 @@
 // AuthApi.ts
 import axiosClient from "./axiosClient";
-import { ApiResponse } from "./ApiResponse"; // Đường dẫn đúng tới ApiResponse
+import { ApiResponse } from "./ApiResponse"; 
 
 class AuthApi {
   async login(email: string, password: string): Promise<ApiResponse> {
