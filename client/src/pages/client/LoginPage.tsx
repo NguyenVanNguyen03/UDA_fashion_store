@@ -1,16 +1,21 @@
-// LoginPage.js
 import { useState } from 'react';
 import '../../components/client/styles/LoginScreen.scss';
 import { GoDash } from 'react-icons/go';
-import AuthApi from '../../apis/authApi'; // Thay đổi đường dẫn tới AuthApi
+import AuthApi from '../../apis/authApi'; 
 import { ApiResponse } from '../../apis/ApiResponse';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { screenUrl } from '../../constants/screenUrls';
 const LoginPage = (): JSX.Element => {
   const [forgotPassword, setForgotPassword] = useState(false);
   const [submitButtonText, setSubmitButtonText] = useState('Đăng nhập');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  
+  const navigate = useNavigate();
+ 
 
   const handleForgotPasswordClick = () => {
     setForgotPassword(true);
@@ -28,17 +33,26 @@ const LoginPage = (): JSX.Element => {
       // Xử lý gửi mã khôi phục mật khẩu
       // ...
     } else {
+      if (!email || !password) {
+        setEmailError(!email); // Đặt emailError thành true nếu email rỗng
+        setPasswordError(!password); // Đặt passwordError thành true nếu password rỗng
+        setLoginError('Vui lòng nhập đầy đủ email và password.');
+        return;
+      }
       try {
+        
         const response: ApiResponse = await AuthApi.login(email, password);
         if (response.userId && response.token) {
           alert('Đăng nhập thành công ');
           localStorage.setItem('userId', response.userId);
           localStorage.setItem('token', response.token);
+          navigate('/');
  
           
         } else {
-          alert( response.message );
+          // alert( response.message );
           console.log( response.message);
+         
         }
       } catch (error: unknown) {
         if (typeof error === 'object' && error !== null) {
@@ -46,7 +60,8 @@ const LoginPage = (): JSX.Element => {
           const typedError = error as { response?: { status?: number } };
           if (typedError.response && typedError.response.status === 401) {
             // Lỗi 401 - Unauthorized (mật khẩu không đúng)
-            alert('Đăng nhập không thành công: Mật khẩu không đúng');
+            setLoginError('Vui lòng kiểm tra lại email hoặc password.');
+            // alert('Đăng nhập không thành công. kiểm tra lại email hoặc password');
             // Hiển thị thông báo lỗi cho người dùng
             // Ví dụ: setState để hiển thị thông báo lỗi trên giao diện
             // Ví dụ: this.setState({ errorMessage: 'Mật khẩu không đúng' });
@@ -76,14 +91,21 @@ const LoginPage = (): JSX.Element => {
             id="email"
             name="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setLoginError('');
+              setEmailError(false); // Đặt emailError về false khi người dùng nhập
+            }}
+            className={emailError ? 'error' : ''}
           />
 
           {forgotPassword ? (
             <>
               <div className="additional-options">
                 <p style={{ color: 'red' }}>Nhập lại email để gửi mã khôi phục mật khẩu.</p>
-                <button type="submit">Gửi</button>
+                <button onClick={()=>{
+                  alert('Gửi thành công')
+                }}type="submit">Gửi</button>
                 <a onClick={handleBackToLoginClick}> huỷ</a>
               </div>
             </>
@@ -95,8 +117,14 @@ const LoginPage = (): JSX.Element => {
                 id="password"
                 name="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setLoginError('');
+                  setPasswordError(false); // Đặt passwordError về false khi người dùng nhập
+                }}
+                className={passwordError ? 'error' : ''}
               />
+              <div className="error-message">{loginError}</div>
               <div className="row">
                 <button type="submit">{submitButtonText}</button>
                 <div className="additional-options">
