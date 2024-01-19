@@ -2,8 +2,13 @@ import axiosClient from "./axiosClient";
 
 class ProductApi {
   getAll() {
-    console.log("hic");
     const url: string = "/products";
+
+    return axiosClient.get(url);
+  }
+
+  getProductById(productId: string) {
+    const url = `/products/${productId}`;
 
     return axiosClient.get(url);
   }
