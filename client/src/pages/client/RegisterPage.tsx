@@ -5,7 +5,7 @@ import { screenUrl } from '../../constants/screenUrls';
 import { Link } from 'react-router-dom';
 
 const RegisterPage = (): JSX.Element => {
-  const [submitButtonText, ] = useState('Đăng ký');
+  const [submitButtonTexts, ] = useState('Đăng ký');
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -110,7 +110,7 @@ const RegisterPage = (): JSX.Element => {
           />
 
           <div className="register-back">
-            <button type="submit">{submitButtonText}</button>
+            <button type="submit">{submitButtonTexts}</button>
             <div className="additional-options">
               <><Link to={screenUrl.LOGIN}> </Link></  >
               <div className='icon-back' style={{ }}>

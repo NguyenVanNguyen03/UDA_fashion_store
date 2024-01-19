@@ -1,6 +1,9 @@
+// AuthApi.ts
 import axiosClient from "./axiosClient";
+import { ApiResponse } from "./ApiResponse"; 
+
 class AuthApi {
-  login(email: string, password: string) {
+  async login(email: string, password: string): Promise<ApiResponse> {
     const url: string = "/auth/login";
     return axiosClient.post(url, {
       email,
@@ -8,7 +11,7 @@ class AuthApi {
     });
   }
 
-  logout(token: string) {
+  async logout(token: string): Promise<ApiResponse> {
     const url: string = "/auth/logout";
     return axiosClient.post(
       url,
@@ -23,3 +26,5 @@ class AuthApi {
 }
 
 export default new AuthApi();
+
+
