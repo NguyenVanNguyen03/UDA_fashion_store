@@ -1,13 +1,11 @@
 const ProductCarousel = () => {
   const productImages = [
-    'https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4',
-    'https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4',
-    'https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4',
-    'https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4',
-    'https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4',
-    'https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4',
-
-
+    "https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4",
+    "https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4",
+    "https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4",
+    "https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4",
+    "https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4",
+    "https://cf.shopee.vn/file/9b7a083de8c6fa6c280a267f69c9fdc4",
   ];
 
   return (
@@ -15,7 +13,11 @@ const ProductCarousel = () => {
       <div className="row">
         {productImages.map((image, index) => (
           <div key={index} className="col">
-            <img src={image} alt={`Product ${index + 1}`} className="img-fluid" />
+            <img
+              src={image}
+              alt={`Product ${index + 1}`}
+              className="img-fluid"
+            />
           </div>
         ))}
       </div>
