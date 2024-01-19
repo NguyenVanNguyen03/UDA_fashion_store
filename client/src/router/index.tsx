@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage, LoginPage } from "../pages/client";
 import { screenUrl } from "../constants/screenUrls";
 import LayoutContainer from "../components/common/LayoutContainer";
+import ProductList from "../components/client/ProductList";
 
 const routerconfig = [
   {
@@ -15,6 +16,13 @@ const routerconfig = [
     url: screenUrl.LOGIN,
     component: LoginPage,
     title: "Trang đăng nhập",
+    isHeader: true,
+    isFooter: true,
+  },
+  {
+    url: screenUrl.COLLECTIONS,
+    component: ProductList,
+    title: "Jacket",
     isHeader: true,
     isFooter: true,
   },
