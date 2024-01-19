@@ -44,9 +44,22 @@
           padding: 8px;
           margin-bottom: 10px;
         }
+        input.error {
+          border: 1px solid red;
+          transition: border 0.3s ease; // Thêm hiệu ứng chuyển động 0.3s
+  
+          &:focus {
+            border-color: darkred; // Thêm màu đỏ khi input được focus
+          }
+        }
+        .error-message {
+          color: red;
+         
+        }
+        
   
         .row {
-          padding-top: 8px;
+          padding-top: 10px;
           display: flex; 
           justify-content: space-between;
           align-items: center;
@@ -64,6 +77,12 @@
           cursor: pointer;
           width: 30%; 
           margin-right: 20px;
+          &:hover {
+            background-color: #10e4f3; // Màu nền mới khi hover
+            transition: background-color 0.3s ease;
+            // Hiệu ứng chuyển động 0.3s khi hover
+          }
+          
         }
   
         .additional-options {
@@ -77,6 +96,9 @@
           span {
             color: #3498db;
             cursor: pointer;
+            &:hover {
+              color: #10e4f3; // Màu mới khi hover
+            }
           }
         }
       }
