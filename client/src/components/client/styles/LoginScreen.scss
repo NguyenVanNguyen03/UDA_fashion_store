@@ -1,85 +1,83 @@
 // LoginScreen.scss
 
 .login-screen {
-    display: flex;
-    height: 100vh;
-  
-    .left-section {
-      background-color: #3498db;
-      color: #fff;
-      display: flex;
-      justify-content:center;
-      flex-direction: column;
-      
-      flex: 1;
+  display: flex;
+  height: 100vh;
 
-      h2{
-        margin-left: 15%;
-        font-size: 3em; 
-        font-family: 'Your Preferred Font', sans-serif;
-        font-weight: 500;
+  .left-section {
+    background-color: #3498db;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    flex: 1;
+
+    h2 {
+      margin-left: 15%;
+      font-size: 3em;
+      font-family: "Your Preferred Font", sans-serif;
+      font-weight: 500;
+    }
+  }
+
+  .right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column; // Thêm dòng này để các phần tử con của .right-section hiển thị dọc
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    form {
+      max-width: 400px;
+      width: 100%;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
       }
 
-    }
-  
-    .right-section {
-      flex: 1;
-      display: flex;
-      flex-direction: column; // Thêm dòng này để các phần tử con của .right-section hiển thị dọc
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-  
-      form {
-        max-width: 400px;
+      input {
         width: 100%;
-  
-        label {
-          display: block;
-          margin-bottom: 5px;
+        padding: 8px;
+        margin-bottom: 10px;
+      }
+
+      .row {
+        padding-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        flex-wrap: nowrap;
+        margin-left: 0;
+      }
+
+      button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        width: 30%;
+        margin-right: 20px;
+      }
+
+      .additional-options {
+        justify-content: space-between;
+        width: 100%;
+
+        p {
+          padding-bottom: 8px;
         }
-  
-        input {
-          width: 100%;
-          padding: 8px;
-          margin-bottom: 10px;
-        }
-  
-        .row {
-          padding-top: 8px;
-          display: flex; 
-          justify-content: space-between;
-          align-items: center;
-          width: 100%; 
-          margin-bottom: 10px;
-          flex-wrap: nowrap; 
-          margin-left: 0;
-        }
-  
-        button {
-          background-color: #3498db;
-          color: #fff;
-          padding: 10px;
-          border: none;
+
+        span {
+          color: #3498db;
           cursor: pointer;
-          width: 30%; 
-          margin-right: 20px;
-        }
-  
-        .additional-options {
-          justify-content: space-between;
-          width: 100%; 
-  
-          p {
-            padding-bottom: 8px;
-          }
-  
-          span {
-            color: #3498db;
-            cursor: pointer;
-          }
         }
       }
     }
   }
-  
+}
