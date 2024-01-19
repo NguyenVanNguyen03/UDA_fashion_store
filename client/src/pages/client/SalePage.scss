@@ -1,0 +1,23 @@
+.sale-page {
+  &__wrapper-img {
+    overflow: hidden;
+    transition: transform 0.4s ease;
+
+    &:hover img {
+      transform: scale(1.3);
+      transition: transform 0.3s ease;
+    }
+
+    img {
+      transition: transform 0.4s ease;
+    }
+  }
+}
+.text-pro {
+  transition: transform 0.4s ease;
+
+  &:hover {
+    color: rgb(38, 184, 184);
+    transform: scale(1.1);
+  }
+}

@@ -2,8 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage, LoginPage } from "../pages/client";
 import { screenUrl } from "../constants/screenUrls";
 import LayoutContainer from "../components/common/LayoutContainer";
+import RegisterPage from "../pages/client/RegisterPage";
+import SalePage from "../pages/client/SalePage";
 import ProductList from "../components/client/ProductList";
-import RegisterPage from "../pages/client/RegisterPage"
 
 const routerconfig = [
   {
@@ -33,7 +34,14 @@ const routerconfig = [
     title: "Trang đăng ký",
     isHeader: true,
     isFooter: true,
-  },  
+  },
+  {
+    url: screenUrl.SALE,
+    component: SalePage,
+    title: "Trang sale",
+    isHeader: true,
+    isFooter: true,
+  },
 ];
 
 const AppRouter = (): JSX.Element => {
