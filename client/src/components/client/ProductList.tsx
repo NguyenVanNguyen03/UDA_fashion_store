@@ -1,8 +1,10 @@
 import { useState } from "react";
-import "./styles/ProductList.scss";
+import { useParams } from "react-router-dom";
 import { HiChevronDoubleDown } from "react-icons/hi2";
 import BreadcrumbProduct from "./Breadcrumb";
 import ReactPaginate from "react-paginate";
+import "./styles/ProductList.scss";
+import ProductCarousel from "./ProductCarousel ";
 
 const data = [
   {
@@ -78,7 +80,7 @@ const data = [
       "https://product.hstatic.net/1000096703/product/0_7cebef26c1064010865e6360197183c2_master.jpg",
   },
   {
-    id: 9,
+    id: 10,
     email: "rachel.howell@reqres.in",
     first_name: "Rachel",
     last_name: "Howell",
@@ -86,7 +88,7 @@ const data = [
       "https://product.hstatic.net/1000096703/product/0_7cebef26c1064010865e6360197183c2_master.jpg",
   },
   {
-    id: 9,
+    id: 11,
     email: "rachel.howell@reqres.in",
     first_name: "Rachel",
     last_name: "Howell",
@@ -94,7 +96,7 @@ const data = [
       "https://product.hstatic.net/1000096703/product/0_7cebef26c1064010865e6360197183c2_master.jpg",
   },
   {
-    id: 9,
+    id: 12,
     email: "rachel.howell@reqres.in",
     first_name: "Rachel",
     last_name: "Howell",
@@ -102,7 +104,7 @@ const data = [
       "https://product.hstatic.net/1000096703/product/0_7cebef26c1064010865e6360197183c2_master.jpg",
   },
   {
-    id: 9,
+    id: 13,
     email: "rachel.howell@reqres.in",
     first_name: "Rachel",
     last_name: "Howell",
@@ -110,7 +112,7 @@ const data = [
       "https://product.hstatic.net/1000096703/product/0_7cebef26c1064010865e6360197183c2_master.jpg",
   },
   {
-    id: 9,
+    id: 14,
     email: "rachel.howell@reqres.in",
     first_name: "Rachel",
     last_name: "Howell",
@@ -118,7 +120,7 @@ const data = [
       "https://product.hstatic.net/1000096703/product/0_7cebef26c1064010865e6360197183c2_master.jpg",
   },
   {
-    id: 9,
+    id: 15,
     email: "rachel.howell@reqres.in",
     first_name: "Rachel",
     last_name: "Howell",
@@ -126,7 +128,7 @@ const data = [
       "https://product.hstatic.net/1000096703/product/0_7cebef26c1064010865e6360197183c2_master.jpg",
   },
   {
-    id: 9,
+    id: 16,
     email: "rachel.howell@reqres.in",
     first_name: "Rachel",
     last_name: "Howell",
@@ -136,6 +138,7 @@ const data = [
 ];
 
 function ProductList() {
+  const { categoryName } = useParams();
   const [showOptions, setShowOptions] = useState(false);
   const itemsPerPage = 12;
   const [currentPage, setCurrentPage] = useState(0);
@@ -158,10 +161,10 @@ function ProductList() {
   return (
     <div className="container_product">
       <div className="breadcrumb">
-        <BreadcrumbProduct />
+        <BreadcrumbProduct categoryName={categoryName} />
       </div>
       <div className="menu">
-        <h3>Áo Khoác</h3>
+        <h3>{categoryName}</h3>
         <button onClick={handleButtonClick}>
           Sản phẩm nổi bật <HiChevronDoubleDown />
         </button>
@@ -210,6 +213,7 @@ function ProductList() {
         containerClassName="pagination"
         activeClassName="active"
       />
+      <ProductCarousel />
     </div>
   );
 }

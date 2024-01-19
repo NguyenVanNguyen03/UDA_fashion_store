@@ -3,5 +3,5 @@ export const screenUrl = {
   LOGIN: "/login",
   COLLECTIONS: "/collections",
   REGISTER: "/register",
-  SALE: "/collection/sale",
+  SALE: "/sale",
 };

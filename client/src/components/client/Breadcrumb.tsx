@@ -1,6 +1,10 @@
 import { Breadcrumb } from "react-bootstrap";
 
-function BreadcrumbProduct() {
+interface BreadcrumbProductProps {
+  categoryName: string | undefined;
+}
+
+function BreadcrumbProduct({ categoryName }: BreadcrumbProductProps) {
   return (
     <Breadcrumb id="breadcrumb">
       <Breadcrumb.Item className="item-breadcrumb" href="/">
@@ -9,7 +13,7 @@ function BreadcrumbProduct() {
       <Breadcrumb.Item className="item-breadcrumb" href="/collections">
         Danh mục
       </Breadcrumb.Item>
-      <Breadcrumb.Item active>Áo Khoác</Breadcrumb.Item>
+      <Breadcrumb.Item active>{categoryName}</Breadcrumb.Item>
     </Breadcrumb>
   );
 }
