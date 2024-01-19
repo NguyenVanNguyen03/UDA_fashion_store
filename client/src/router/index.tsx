@@ -3,6 +3,7 @@ import { HomePage, LoginPage } from "../pages/client";
 import { screenUrl } from "../constants/screenUrls";
 import LayoutContainer from "../components/common/LayoutContainer";
 import ProductList from "../components/client/ProductList";
+import RegisterPage from "../pages/client/RegisterPage"
 
 const routerconfig = [
   {
@@ -26,6 +27,13 @@ const routerconfig = [
     isHeader: true,
     isFooter: true,
   },
+  {
+    url: screenUrl.REGISTER,
+    component: RegisterPage,
+    title: "Trang đăng ký",
+    isHeader: true,
+    isFooter: true,
+  },  
 ];
 
 const AppRouter = (): JSX.Element => {
