@@ -4,7 +4,7 @@ import { screenUrl } from "../constants/screenUrls";
 import LayoutContainer from "../components/common/LayoutContainer";
 import RegisterPage from "../pages/client/RegisterPage";
 import SalePage from "../pages/client/SalePage";
-// D:\Năm 3\Project React\UDA_fashion_store\client\src\pages\client\RegisterPage.tsx
+import ProductList from "../components/client/ProductList";
 
 const routerconfig = [
   {
@@ -18,6 +18,13 @@ const routerconfig = [
     url: screenUrl.LOGIN,
     component: LoginPage,
     title: "Trang đăng nhập",
+    isHeader: true,
+    isFooter: true,
+  },
+  {
+    url: screenUrl.COLLECTIONS,
+    component: ProductList,
+    title: "Jacket",
     isHeader: true,
     isFooter: true,
   },
