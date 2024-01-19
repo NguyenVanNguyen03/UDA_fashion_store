@@ -22,7 +22,7 @@ const routerconfig = [
     isFooter: true,
   },
   {
-    url: screenUrl.COLLECTIONS,
+    url: `${screenUrl.COLLECTIONS}/:categoryName`,
     component: ProductList,
     title: "Jacket",
     isHeader: true,
@@ -36,7 +36,7 @@ const routerconfig = [
     isFooter: true,
   },
   {
-    url: screenUrl.SALE,
+    url: `/collections${screenUrl.SALE}`,
     component: SalePage,
     title: "Trang sale",
     isHeader: true,
