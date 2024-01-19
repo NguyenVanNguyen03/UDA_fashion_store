@@ -4,6 +4,8 @@ import '../../components/client/styles/LoginScreen.scss';
 import { GoDash } from 'react-icons/go';
 import AuthApi from '../../apis/authApi'; // Thay đổi đường dẫn tới AuthApi
 import { ApiResponse } from '../../apis/ApiResponse';
+import { Link } from 'react-router-dom';
+import { screenUrl } from '../../constants/screenUrls';
 const LoginPage = (): JSX.Element => {
   const [forgotPassword, setForgotPassword] = useState(false);
   const [submitButtonText, setSubmitButtonText] = useState('Đăng nhập');
@@ -99,7 +101,7 @@ const LoginPage = (): JSX.Element => {
                 <button type="submit">{submitButtonText}</button>
                 <div className="additional-options">
                   <span onClick={handleForgotPasswordClick}>Quên mật khẩu?</span>
-                  <p>hoặc <span>Đăng ký</span></p>
+                  <p>hoặc <Link to={screenUrl.REGISTER} > <span>Đăng ký</span></Link></p>
                 </div>
               </div>
             </>
