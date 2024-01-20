@@ -171,10 +171,11 @@ const Header = (): JSX.Element => {
   const [isSearchFormVisible, setIsSearchFormVisible] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  
   const closeAll = () => {
     setIsSearchFormVisible(false);
     setIsCartVisible(false);
+   
   };
 
   useEffect(() => {
@@ -219,11 +220,12 @@ const Header = (): JSX.Element => {
           }`}
         >
           <Link to={screenUrl.LOGIN}>
-            <FaUserCircle
-              className="d-none d-lg-block"
-              fontSize={30}
-              cursor={"pointer"}
-            />
+          <FaUserCircle
+            className="d-none d-lg-block"
+            fontSize={30}
+            cursor={"pointer"}
+          />
+      
           </Link>
           <FiSearch
             fontSize={30}
