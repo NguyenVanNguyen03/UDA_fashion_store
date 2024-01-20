@@ -51,12 +51,31 @@
       cursor: pointer;
       font-size: 15px;
     }
-    &__card-img {
-      width: 60% !important;
+    &__card img {
+      height: 300px;
+    }
+    &__card:hover .wrapper__btn-card__img {
+      transform: translate(0%, 0%);
+      opacity: 1;
     }
   }
   .product-price {
     font-weight: 600;
+  }
+  & .btn-card__img {
+    background-color: black;
+    color: white;
+    border-radius: 0;
+    font-size: 15px;
+  }
+  & .wrapper__btn-card__img {
+    opacity: 0;
+    transform: translate(0%, -30%);
+    transition: all 0.6s ease-in-out;
+  }
+  & .btn-card__img:hover {
+    background-color: rgba(0, 0, 0, 0.772);
+    color: white;
   }
   .btn__load-data {
     background-color: black;

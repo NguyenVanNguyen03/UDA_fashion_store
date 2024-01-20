@@ -18,6 +18,7 @@ export type DropDownItem = {
 export type Category = {
   id: string;
   name: string;
+  url: string;
   listDropDown: DropDownItem[];
 };
 
@@ -27,6 +28,7 @@ const data: Data = [
   {
     id: "11",
     name: "Áo khoác",
+    url: "/ao-khoac",
     listDropDown: [
       {
         id: "22",
@@ -47,8 +49,9 @@ const data: Data = [
     ],
   },
   {
-    id: "11",
+    id: "12",
     name: "Áo Thun",
+    url: "/ao-thun",
     listDropDown: [
       {
         id: "22",
@@ -69,8 +72,9 @@ const data: Data = [
     ],
   },
   {
-    id: "11",
+    id: "13",
     name: "Sơ mi",
+    url: "/so-mi",
     listDropDown: [
       {
         id: "22",
@@ -91,8 +95,9 @@ const data: Data = [
     ],
   },
   {
-    id: "11",
+    id: "14",
     name: "Quần dài",
+    url: "/quan-dai",
     listDropDown: [
       {
         id: "22",
@@ -113,8 +118,9 @@ const data: Data = [
     ],
   },
   {
-    id: "11",
+    id: "15",
     name: "Quần short",
+    url: "/quan-short",
     listDropDown: [
       {
         id: "22",
@@ -135,8 +141,9 @@ const data: Data = [
     ],
   },
   {
-    id: "11",
+    id: "16",
     name: "Áo khoác",
+    url: "/ao-khoac-2",
     listDropDown: [
       {
         id: "22",
@@ -155,6 +162,12 @@ const data: Data = [
         name: "Áo khoác blazer nam",
       },
     ],
+  },
+  {
+    id: "17",
+    name: "Sale",
+    url: "/sale",
+    listDropDown: [],
   },
 ];
 
@@ -258,6 +271,7 @@ const Header = (): JSX.Element => {
                 key={index}
                 id={el.id}
                 name={el.name}
+                url={el.url}
                 listDropDown={el.listDropDown}
               />
             );
