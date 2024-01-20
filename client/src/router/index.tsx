@@ -4,6 +4,7 @@ import { screenUrl } from "../constants/screenUrls";
 import LayoutContainer from "../components/common/LayoutContainer";
 import RegisterPage from "../pages/client/RegisterPage";
 import SalePage from "../pages/client/SalePage";
+import DescriptionPage from "../pages/client/DescriptionPage";
 // D:\Năm 3\Project React\UDA_fashion_store\client\src\pages\client\RegisterPage.tsx
 
 const routerconfig = [
@@ -31,6 +32,13 @@ const routerconfig = [
   {
     url: screenUrl.SALE,
     component: SalePage,
+    title: "Trang sale",
+    isHeader: true,
+    isFooter: true,
+  },
+  {
+    url: `${screenUrl.PRODUCT}/:productName`,
+    component: DescriptionPage,
     title: "Trang sale",
     isHeader: true,
     isFooter: true,
