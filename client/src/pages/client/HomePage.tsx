@@ -175,7 +175,7 @@ const products = [
     category: "QUẦN SHORT",
     products: [
       {
-        id: 5,
+        id: 13,
         price: 250000,
         title: "Sơ Mi Nam Trắng SMI0085",
         img: "https://product.hstatic.net/1000096703/product/1_2990050edac54c589b589a1286d97818_grande.jpg",
@@ -183,7 +183,7 @@ const products = [
         color: "White",
       },
       {
-        id: 6,
+        id: 14,
         price: 250000,
         title: "Sơ Mi Nam Đen SMI0092",
         img: "https://product.hstatic.net/1000096703/product/1_2990050edac54c589b589a1286d97818_grande.jpg",
@@ -191,7 +191,7 @@ const products = [
         color: "Black",
       },
       {
-        id: 7,
+        id: 15,
         price: 250000,
         title: "Sơ Mi Nam Xanh Dương SMI0078",
         img: "https://product.hstatic.net/1000096703/product/1_2990050edac54c589b589a1286d97818_grande.jpg",
@@ -199,7 +199,7 @@ const products = [
         color: "Blue",
       },
       {
-        id: 8,
+        id: 16,
         price: 250000,
         title: "Sơ Mi Nam Xanh Lá SMI0056",
         img: "https://product.hstatic.net/1000096703/product/1_2990050edac54c589b589a1286d97818_grande.jpg",
