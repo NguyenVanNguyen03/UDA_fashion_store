@@ -5,7 +5,7 @@ import LayoutContainer from "../components/common/LayoutContainer";
 import RegisterPage from "../pages/client/RegisterPage";
 import SalePage from "../pages/client/SalePage";
 import DescriptionPage from "../pages/client/DescriptionPage";
-// D:\Năm 3\Project React\UDA_fashion_store\client\src\pages\client\RegisterPage.tsx
+import ProductList from "../components/client/ProductList";
 
 const routerconfig = [
   {
@@ -23,6 +23,13 @@ const routerconfig = [
     isFooter: true,
   },
   {
+    url: `${screenUrl.COLLECTIONS}/:categoryName`,
+    component: ProductList,
+    title: "Jacket",
+    isHeader: true,
+    isFooter: true,
+  },
+  {
     url: screenUrl.REGISTER,
     component: RegisterPage,
     title: "Trang đăng ký",
@@ -30,7 +37,7 @@ const routerconfig = [
     isFooter: true,
   },
   {
-    url: screenUrl.SALE,
+    url: `/collections${screenUrl.SALE}`,
     component: SalePage,
     title: "Trang sale",
     isHeader: true,

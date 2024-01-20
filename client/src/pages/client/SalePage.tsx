@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ProductCarousel from "../../components/client/ProductCarousel ";
 import "./SalePage.scss";
 
 const productSale = [
@@ -151,6 +152,7 @@ const SalePage = () => {
           );
         })}
       </div>
+      <ProductCarousel />
     </div>
   );
 };
