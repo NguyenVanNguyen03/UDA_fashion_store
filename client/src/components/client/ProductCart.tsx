@@ -1,25 +1,56 @@
-import { useState } from "react";
+import { deleteProduct } from "../../store/productSlice";
+import { useDispatch } from "react-redux";
 import { IoCloseSharp } from "react-icons/io5";
 
-const ProductCart = (): JSX.Element => {
-  const [isCardVisible, setIsCardVisible] = useState(true);
+type PropsType = {
+  product: {
+    id: string;
+    name: string;
+    size: string;
+    color: string;
+    price: number;
+    image: string;
+    cartItemNumber: number;
+  };
+};
 
-  return isCardVisible ? (
+const ProductCart = (props: PropsType): JSX.Element => {
+  const ditpatch = useDispatch();
+  const product = props.product;
+
+  const hanleDelteProduct = (id: string) => {
+    ditpatch(deleteProduct(id));
+  };
+
+  return (
     <div className="cart__wrapper__product d-flex w-100 mt-2">
-      <img
-        src="https://th.bing.com/th/id/OIP._skW4WfyOqVE_Qj6v2gYZAHaHn?w=198&h=204&c=7&r=0&o=5&dpr=1.5&pid=1.7"
-        alt=""
-        className="cart__product-img"
-      />
+      <img src={product.image} alt="" className="cart__product-img" />
       <div className="ms-3 d-flex flex-column justify-content-center">
-        <h2 className="cart__product-title">ÁO KHOÁC DÙ DÂY KÉO XÉO AKD0042</h2>
-        <h2 className="cart__product-size">XL/Đen</h2>
-        <h2 className="cart__product-price">320,000đ</h2>
+        <h2 className="cart__product-title">{product.name}</h2>
+        <h2 className="cart__product-size">
+          {product.size}/{product.color}
+        </h2>
+        <div className="d-flex align-items-center gap-2">
+          <p
+            className="d-flex justify-content-center align-items-center"
+            style={{
+              width: "20px",
+              height: "20px",
+              backgroundColor: "black",
+              color: "white",
+            }}
+          >
+            {product.cartItemNumber}
+          </p>
+          <p className="cart__product-price m-0 d-block">
+            {product.price.toLocaleString()}đ
+          </p>
+        </div>
       </div>
       <button
         className="ms-2 btn btn-danger rounded-0"
         onClick={() => {
-          setIsCardVisible(false);
+          hanleDelteProduct(product.id);
         }}
       >
         <IoCloseSharp
@@ -29,8 +60,6 @@ const ProductCart = (): JSX.Element => {
         />
       </button>
     </div>
-  ) : (
-    <div></div>
   );
 };
 

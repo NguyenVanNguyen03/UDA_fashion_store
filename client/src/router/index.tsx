@@ -23,6 +23,13 @@ const routerconfig = [
     isFooter: true,
   },
   {
+    url: screenUrl.COLLECTIONS,
+    component: ProductList,
+    title: "Jacket",
+    isHeader: true,
+    isFooter: true,
+  },
+  {
     url: `${screenUrl.COLLECTIONS}/:categoryName`,
     component: ProductList,
     title: "Jacket",

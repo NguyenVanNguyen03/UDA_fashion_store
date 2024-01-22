@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import "./styles/NavLink.scss";
 import { Category } from "../common/Header";
 import { screenUrl } from "../../constants/screenUrls";
+import "./styles/NavLink.scss";
 
 const NavLink = (props: Category): JSX.Element => {
-  const { name, listDropDown, url }: Category = props;
+  const { name, listDropDown, urlCollections }: Category = props;
+
   return (
     <li className="navlink position-relative">
       <div className="d-flex align-items-center">
-        <Link to={`/collections${url}`}>{name}</Link>
+        <Link to={`/collections/${urlCollections}`}>{name}</Link>
         {listDropDown.length !== 0 ? (
           <RiArrowDropDownLine className="btn-dropDown d-flex" fontSize={30} />
         ) : (
