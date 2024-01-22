@@ -18,8 +18,8 @@ export type DropDownItem = {
 export type Category = {
   id: string;
   name: string;
-  url: string;
   listDropDown: DropDownItem[];
+  urlCollections: string;
 };
 
 export type Data = Category[];
@@ -28,7 +28,7 @@ const data: Data = [
   {
     id: "11",
     name: "Áo khoác",
-    url: "/ao-khoac",
+    urlCollections: "ao-khoac",
     listDropDown: [
       {
         id: "22",
@@ -51,22 +51,22 @@ const data: Data = [
   {
     id: "12",
     name: "Áo Thun",
-    url: "/ao-thun",
+    urlCollections: "ao-thun",
     listDropDown: [
       {
-        id: "22",
+        id: "26",
         name: "Áo khoác nỉ",
       },
       {
-        id: "23",
+        id: "27",
         name: "Áo khoác dù",
       },
       {
-        id: "24",
+        id: "28",
         name: "Áo khoác kaki",
       },
       {
-        id: "25",
+        id: "29",
         name: "Áo khoác blazer nam",
       },
     ],
@@ -74,22 +74,22 @@ const data: Data = [
   {
     id: "13",
     name: "Sơ mi",
-    url: "/so-mi",
+    urlCollections: "so-mi",
     listDropDown: [
       {
-        id: "22",
+        id: "30",
         name: "Áo khoác nỉ",
       },
       {
-        id: "23",
+        id: "31",
         name: "Áo khoác dù",
       },
       {
-        id: "24",
+        id: "32",
         name: "Áo khoác kaki",
       },
       {
-        id: "25",
+        id: "33",
         name: "Áo khoác blazer nam",
       },
     ],
@@ -97,22 +97,22 @@ const data: Data = [
   {
     id: "14",
     name: "Quần dài",
-    url: "/quan-dai",
+    urlCollections: "quan-dai",
     listDropDown: [
       {
-        id: "22",
+        id: "34",
         name: "Áo khoác nỉ",
       },
       {
-        id: "23",
+        id: "35",
         name: "Áo khoác dù",
       },
       {
-        id: "24",
+        id: "36",
         name: "Áo khoác kaki",
       },
       {
-        id: "25",
+        id: "37",
         name: "Áo khoác blazer nam",
       },
     ],
@@ -120,22 +120,22 @@ const data: Data = [
   {
     id: "15",
     name: "Quần short",
-    url: "/quan-short",
+    urlCollections: "quan-short",
     listDropDown: [
       {
-        id: "22",
+        id: "38",
         name: "Áo khoác nỉ",
       },
       {
-        id: "23",
+        id: "39",
         name: "Áo khoác dù",
       },
       {
-        id: "24",
+        id: "40",
         name: "Áo khoác kaki",
       },
       {
-        id: "25",
+        id: "41",
         name: "Áo khoác blazer nam",
       },
     ],
@@ -143,22 +143,22 @@ const data: Data = [
   {
     id: "16",
     name: "Áo khoác",
-    url: "/ao-khoac-2",
+    urlCollections: "ao-khoac",
     listDropDown: [
       {
-        id: "22",
+        id: "42",
         name: "Áo khoác nỉ",
       },
       {
-        id: "23",
+        id: "43",
         name: "Áo khoác dù",
       },
       {
-        id: "24",
+        id: "44",
         name: "Áo khoác kaki",
       },
       {
-        id: "25",
+        id: "45",
         name: "Áo khoác blazer nam",
       },
     ],
@@ -166,7 +166,7 @@ const data: Data = [
   {
     id: "17",
     name: "Sale",
-    url: "/sale",
+    urlCollections: "sale",
     listDropDown: [],
   },
 ];
@@ -298,8 +298,8 @@ const Header = (): JSX.Element => {
                 key={index}
                 id={el.id}
                 name={el.name}
-                url={el.url}
                 listDropDown={el.listDropDown}
+                urlCollections={el.urlCollections}
               />
             );
           })}
