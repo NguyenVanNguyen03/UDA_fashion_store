@@ -4,6 +4,7 @@ import { screenUrl } from "../constants/screenUrls";
 import LayoutContainer from "../components/common/LayoutContainer";
 import RegisterPage from "../pages/client/RegisterPage";
 import SalePage from "../pages/client/SalePage";
+import DescriptionPage from "../pages/client/DescriptionPage";
 import ProductList from "../components/client/ProductList";
 
 const routerconfig = [
@@ -45,6 +46,13 @@ const routerconfig = [
   {
     url: `/collections${screenUrl.SALE}`,
     component: SalePage,
+    title: "Trang sale",
+    isHeader: true,
+    isFooter: true,
+  },
+  {
+    url: `${screenUrl.PRODUCT}/:productName`,
+    component: DescriptionPage,
     title: "Trang sale",
     isHeader: true,
     isFooter: true,
