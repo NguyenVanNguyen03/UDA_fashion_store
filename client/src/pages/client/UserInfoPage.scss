@@ -1,0 +1,28 @@
+// UserInfoPage.scss
+
+.user-info-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 500px;
+    border: 1px solid #ccc;
+    // border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    h1{
+      text-align: center;
+    }
+  }
+  
+  .user-details {
+    margin-top: 20px;
+    padding: 30px;
+    
+  
+    p {
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Add more styling as needed */
+  

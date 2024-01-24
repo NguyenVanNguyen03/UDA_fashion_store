@@ -5,7 +5,7 @@ import LayoutContainer from "../components/common/LayoutContainer";
 import RegisterPage from "../pages/client/RegisterPage";
 import SalePage from "../pages/client/SalePage";
 import ProductList from "../components/client/ProductList";
-
+import UserInfoPage from "../pages/client/UserInfoPage";
 const routerconfig = [
   {
     url: screenUrl.HOME,
@@ -49,6 +49,14 @@ const routerconfig = [
     isHeader: true,
     isFooter: true,
   },
+  {
+    url: screenUrl.INFO,
+    component: UserInfoPage,
+    title: "Thông tin của tôi",
+    isHeader: true,
+    isFooter: true,
+  },
+
 ];
 
 const AppRouter = (): JSX.Element => {
