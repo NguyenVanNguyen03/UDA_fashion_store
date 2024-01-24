@@ -6,7 +6,7 @@ import RegisterPage from "../pages/client/RegisterPage";
 import SalePage from "../pages/client/SalePage";
 import DescriptionPage from "../pages/client/DescriptionPage";
 import ProductList from "../components/client/ProductList";
-
+import UserInfoPage from "../pages/client/UserInfoPage";
 const routerconfig = [
   {
     url: screenUrl.HOME,
@@ -51,12 +51,20 @@ const routerconfig = [
     isFooter: true,
   },
   {
+    url: screenUrl.INFO,
+    component: UserInfoPage,
+    title: "Thông tin của tôi",
+    isHeader: true,
+    isFooter: true,
+  },
+  {
     url: `${screenUrl.PRODUCT}/:productName`,
     component: DescriptionPage,
     title: "Trang sale",
     isHeader: true,
     isFooter: true,
   },
+
 ];
 
 const AppRouter = (): JSX.Element => {
