@@ -57,6 +57,13 @@ const routerconfig = [
     isHeader: true,
     isFooter: true,
   },
+  {
+    url: `${screenUrl.PRODUCT}/:productName`,
+    component: DescriptionPage,
+    title: "Trang sale",
+    isHeader: true,
+    isFooter: true,
+  },
 
 ];
 
