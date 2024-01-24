@@ -4,6 +4,7 @@ import { screenUrl } from "../constants/screenUrls";
 import LayoutContainer from "../components/common/LayoutContainer";
 import RegisterPage from "../pages/client/RegisterPage";
 import SalePage from "../pages/client/SalePage";
+import DescriptionPage from "../pages/client/DescriptionPage";
 import ProductList from "../components/client/ProductList";
 import UserInfoPage from "../pages/client/UserInfoPage";
 const routerconfig = [
