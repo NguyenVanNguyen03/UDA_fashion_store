@@ -15,7 +15,7 @@ const Footer = (): JSX.Element => {
         <div>
           <h3>KENTA VN</h3>
           <ul>
-            <li>Giới thiệu2232322</li>
+            <li>Giới thiệu223211322</li>
             <li>Kiểm tra đơn hàng</li>
             <li>Cách chọn size</li>
             <li>Thông tin liên hệ</li>
