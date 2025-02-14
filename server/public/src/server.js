@@ -30,17 +30,35 @@ const express_1 = __importDefault(require("express"));
 const database_1 = require("./config/database");
 const dotenv = __importStar(require("dotenv"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const cors_1 = __importDefault(require("cors"));
 const router_1 = require("./router");
 const app = (0, express_1.default)();
 dotenv.config();
 (0, database_1.connectMongoDb)();
 const port = parseInt(process.env.PORT || "3000", 10);
+app.use((0, cors_1.default)());
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(body_parser_1.default.json());
-app.use(`/${process.env.API_VERSION}/user`, router_1.userRouter);
+app.use(`/${process.env.API_VERSION}/users`, router_1.userRouter);
 app.use(`/${process.env.API_VERSION}/auth`, router_1.authRouter);
+app.use(`/${process.env.API_VERSION}/products`, router_1.productRouter);
+app.use(`/${process.env.API_VERSION}/discountCode`, router_1.discountCodeRouter);
+app.use(`/${process.env.API_VERSION}/parentCategories`, router_1.parentCategoryRouter);
+app.use(`/${process.env.API_VERSION}/categories`, router_1.categoryRouter);
+app.use(`/${process.env.API_VERSION}/sizes`, router_1.sizeRouter);
 app.use((req, res) => {
     res.status(404).json({ message: "Route not found" });
+});
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST, GET, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200); // Preflight Request successful, stop processing
+    }
+    else {
+        next();
+    }
 });
 app.listen(port, () => {
     console.log(`App is running on port ${port}`);

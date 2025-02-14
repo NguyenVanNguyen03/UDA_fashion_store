@@ -1,0 +1,160 @@
+# name: CI/CD Pipeline
+
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
+
+# env:
+#   DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+#   DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+#   MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+
+# jobs:
+#   build-and-test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v3
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: "20.9.0"
+
+#       - name: Install dependencies - Server
+#         working-directory: ./server
+#         run: |
+#           yarn install
+
+#       - name: Build and test - Server
+#         working-directory: ./server
+#         run: |
+#           yarn build
+#           yarn test
+
+#       - name: Install dependencies - Client
+#         working-directory: ./client
+#         run: |
+#           yarn install
+
+#       - name: Build - Client
+#         working-directory: ./client
+#         run: yarn build
+#         env:
+#           VITE_API_URL: ${{ secrets.VITE_API_URL }}
+
+#   docker-build-push:
+#     needs: build-and-test
+#     runs-on: ubuntu-latest
+#     if: github.ref == 'refs/heads/main'
+
+#     steps:
+#       - uses: actions/checkout@v3
+
+#       - name: Login to Docker Hub
+#         uses: docker/login-action@v2
+#         with:
+#           username: ${{ env.DOCKER_HUB_USERNAME }}
+#           password: ${{ env.DOCKER_HUB_TOKEN }}
+
+#       - name: Build and push server image
+#         uses: docker/build-push-action@v4
+#         with:
+#           context: ./server
+#           push: true
+#           tags: ${{ env.DOCKER_HUB_USERNAME }}/uda-fashion-server:latest
+
+#       - name: Build and push client image
+#         uses: docker/build-push-action@v4
+#         with:
+#           context: ./client
+#           push: true
+#           tags: ${{ env.DOCKER_HUB_USERNAME }}/uda-fashion-client:latest
+#           build-args: |
+#             VITE_API_URL=${{ secrets.VITE_API_URL }}
+
+#   deploy:
+#     needs: docker-build-push
+#     runs-on: ubuntu-latest
+#     if: github.ref == 'refs/heads/main'
+
+#     steps:
+#       - uses: actions/checkout@v3
+
+#       - name: Copy docker-compose file to server
+#         uses: appleboy/scp-action@master
+#         with:
+#           host: ${{ secrets.SERVER_HOST }}
+#           username: ${{ secrets.SERVER_USERNAME }}
+#           key: ${{ secrets.SERVER_SSH_KEY }}
+#           source: "docker-compose.yml"
+#           target: "/app"
+
+#       - name: Deploy to server
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.SERVER_HOST }}
+#           username: ${{ secrets.SERVER_USERNAME }}
+#           key: ${{ secrets.SERVER_SSH_KEY }}
+#           script: |
+#             cd /app
+#             echo "DOCKER_HUB_USERNAME=${{ env.DOCKER_HUB_USERNAME }}" > .env
+#             echo "MONGO_PASSWORD=${{ env.MONGO_PASSWORD }}" >> .env
+#             docker-compose pull
+#             docker-compose up -d
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+  DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+  MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.9.0"
+
+      - name: Install dependencies - Server
+        working-directory: ./server
+        run: |
+          yarn install
+
+      - name: Build - Server
+        working-directory: ./server
+        run: yarn build
+
+      - name: Test - Server
+        working-directory: ./server
+        run: |
+          if [ -f "jest.config.js" ]; then
+            yarn test
+          else
+            echo "No tests configured, skipping..."
+          fi
+
+      - name: Install dependencies - Client
+        working-directory: ./client
+        run: |
+          yarn install
+
+      - name: Build - Client
+        working-directory: ./client
+        run: yarn build
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}

@@ -1,7 +1,9 @@
 import axios from "axios";
 
+console.log(import.meta.env.CHAU_API, "fdsaf");
+
 const axiosClient = axios.create({
-  baseURL: "https://uda-fashion-store-api.vercel.app/v1",
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },

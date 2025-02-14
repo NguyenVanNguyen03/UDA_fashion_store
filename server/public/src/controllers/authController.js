@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const userModel_1 = __importDefault(require("../models/userModel"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
-class IndexController {
+class AuthController {
     async login(req, res) {
         try {
             const { email, password } = req.body;
@@ -49,4 +49,4 @@ class IndexController {
         }
     }
 }
-exports.default = new IndexController();
+exports.default = new AuthController();
